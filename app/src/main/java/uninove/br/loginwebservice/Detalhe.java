@@ -16,7 +16,7 @@ import android.widget.Toolbar;
 import java.util.ArrayList;
 
 public class Detalhe extends AppCompatActivity {
-    TextView nome, email, telefone;
+    TextView nome, email, id, criado, atualizado;
     Button btVoltar;
 
     @Override
@@ -27,7 +27,7 @@ public class Detalhe extends AppCompatActivity {
         // Configura a barra superior para apresentar um botão de voltar (<-)
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Detalhes do Contato");
+        getSupportActionBar().setTitle("Detalhes da Anotação");
 
         Intent it = getIntent();
         Bundle params = it.getExtras();
@@ -39,11 +39,15 @@ public class Detalhe extends AppCompatActivity {
             if (contato.getTitle().equals(itemProcurado)) {
                 nome = (TextView) findViewById(R.id.nome);
                 email = (TextView) findViewById(R.id.email);
-                telefone = (TextView) findViewById(R.id.telefone);
+                id = (TextView) findViewById(R.id.id);
+                criado = (TextView) findViewById(R.id.criado);
+                atualizado = (TextView) findViewById(R.id.atualizado);
 
+                id.setText(String.valueOf(contato.getId()));
                 nome.setText(contato.getTitle());
                 email.setText(contato.getContent());
-//                telefone.setText(contato.getTelefone());
+                criado.setText(contato.getCreatedAt());
+                atualizado.setText(contato.getUpdatedAt());
             }
         }
 
