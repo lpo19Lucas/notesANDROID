@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText usuario, senha;
     Button btLogin;
-    ArrayList<Contato> contato = new ArrayList<Contato>();
+    ArrayList<Contato> anotacoes = new ArrayList<Contato>();
     private Mensagem msg = new Mensagem(MainActivity.this);
 
     // Vaiável para gerar uma menssagem de carregamento
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 //        usuario = (EditText) findViewById(R.id.usuario);
 //        senha = (EditText) findViewById(R.id.senha);
         btLogin = (Button) findViewById(R.id.btLogin);
-//
+
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         protected void onPreExecute() {
             super.onPreExecute();
-            load = ProgressDialog.show(MainActivity.this, "Aguarde", "Recuperando contatos...");
+            load = ProgressDialog.show(MainActivity.this, "Aguarde", "Recuperando anotações...");
         }
 
         @Override
@@ -64,26 +64,20 @@ public class MainActivity extends AppCompatActivity {
 
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
+            String result = null;
+
             try {
-                URL url = new URL("http://localhost:8080/api/notes");
+                URL url = new URL("https://serene-meadow-32620.herokuapp.com/api/notes");
                 urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setDoOutput(true);
                 urlConnection.setRequestMethod("GET");
                 urlConnection.setRequestProperty("Content-Type", "application/json");
 
                 urlConnection.connect();
 
                 InputStream inputStream = urlConnection.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(inputStream));
+                result = inputStreamToString(inputStream);
 
-                String linha;
-                StringBuffer buffer = new StringBuffer();
-                while ((linha = reader.readLine()) != null) {
-                    buffer.append(linha);
-                    buffer.append("\n");
-                }
-
-                return buffer.toString();
+                return result;
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -103,52 +97,55 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
 
+        private String inputStreamToString(InputStream is) {
+            String rLine = "";
+            StringBuilder answer = new StringBuilder();
+
+            InputStreamReader isr = new InputStreamReader(is);
+
+            BufferedReader rd = new BufferedReader(isr);
+
+            try {
+                while ((rLine = rd.readLine()) != null) {
+                    answer.append(rLine);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return answer.toString();
+        }
+
+
         @Override
         protected void onPostExecute(String dados) {
             super.onPostExecute(dados);
             try {
-                JSONObject jsonObject = new JSONObject(dados);
-//                String contatos = jsonObject.getString("contatos");
 
-                Log.d("dados", dados);
-//
-//                if (contatos.equals("-1")) {
-//                    AlertDialog.Builder builder = new AlertDialog.
-//                            Builder(MainActivity.this);
-//                    builder.setTitle("AVISO");
-//                    builder.setMessage("Erro no Login");
-//                    builder.setPositiveButton("OK",
-//                            new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialogInterface, int i) {
-//                                }
-//                            });
-//                    builder.create().show();
-//                } else {
-                    JSONArray jsonArray = new JSONArray(dados);
+                JSONArray jsonArray = new JSONArray(dados);
 
-                    // Limpa o ArrayList
-                    contato.clear();
+                Log.d("dados", String.valueOf(jsonArray));
 
-                    // Percorre os campos do array e recupera os valores
+                  // Limpa o ArrayList
+                anotacoes.clear();
+
+//                    // Percorre os campos do array e recupera os valores
                     for (int i = 0; i < jsonArray.length(); i++) {
-                        Contato a = new Contato();
-                        jsonObject = new JSONObject(jsonArray.getString(i));
-                        a.setId(Integer.parseInt(jsonObject.getString("id")));
-                        a.setTitle(jsonObject.getString("title"));
-                        a.setContent(jsonObject.getString("content"));
-//                        a.setTelefone(jsonObject.getString("telefone"));
-                        contato.add(a);
+                        Contato anotacao = new Contato();
+                        JSONObject jsonObject = new JSONObject(jsonArray.getString(i));
+                        anotacao.setId(Integer.parseInt(jsonObject.getString("id")));
+                        anotacao.setTitle(jsonObject.getString("title"));
+                        anotacao.setContent(jsonObject.getString("content"));
+                        anotacao.setCreatedAt(jsonObject.getString("createdAt"));
+                        anotacao.setUpdatedAt(jsonObject.getString("updatedAt"));
+                        anotacoes.add(anotacao);
                     }
 
                     Intent it = new Intent(MainActivity.this, LoginSucesso.class);
                     Bundle b = new Bundle();
-                    b.putSerializable("objContatos", contato);
+                    b.putSerializable("objContatos", anotacoes);
                     it.putExtras(b);
                     startActivity(it);
                     finish();
-//                }
-                load.cancel();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -159,12 +156,13 @@ public class MainActivity extends AppCompatActivity {
      * Verifica a conexão com o Webservice
      */
     public void accessWebService() {
-//        if (testaConexao()) {
+        if (testaConexao()) {
             new DownloadDados().execute();
+            msg.show("Status da Conexão", "Possue acessso a Rede", "Aviso");
 
-//        } else {
-//            msg.show("Status da Conexão", "Sem acessso a rede", "Aviso");
-//        }
+        } else {
+            msg.show("Status da Conexão", "Sem acessso a rede", "Aviso");
+        }
     }
 
     /**
