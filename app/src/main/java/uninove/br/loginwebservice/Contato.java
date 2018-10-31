@@ -11,7 +11,6 @@ public class Contato implements Serializable {
     private String updatedAt;
 
 
-
     public Contato() {
     }
 
@@ -43,7 +42,16 @@ public class Contato implements Serializable {
         return createdAt;
     }
 
-    public String getUpdatedAtAt() {
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getUpdatedAt() {
         return updatedAt;
     }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
 }
