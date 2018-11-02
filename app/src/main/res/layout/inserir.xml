@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="415dp"
+        android:layout_height="373dp"
         android:layout_margin="20dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="20dp"
@@ -27,7 +28,7 @@
                 android:text="Titulo:" />
 
             <EditText
-                android:id="@+id/titulo2"
+                android:id="@+id/titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -51,7 +52,7 @@
                 android:text="Conteudo:" />
 
             <EditText
-                android:id="@+id/conteudo2"
+                android:id="@+id/conteudo"
                 android:layout_width="wrap_content"
                 android:layout_height="179dp"
                 android:layout_weight="1"
@@ -66,11 +67,11 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/excluir"
+                android:id="@+id/inserir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Excluir" />
+                android:text="Inserir" />
         </LinearLayout>
 
     </LinearLayout>
