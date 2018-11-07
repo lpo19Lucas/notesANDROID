@@ -78,7 +78,7 @@ public class LoginSucesso extends AppCompatActivity {
         adicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(LoginSucesso.this, Detalhe.class);
+                Intent it = new Intent(LoginSucesso.this, Adicionar.class);
                 startActivity(it);
 //                HttpURLConnection urlConnection = null;
 //                BufferedReader reader = null;
