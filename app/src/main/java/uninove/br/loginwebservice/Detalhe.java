@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -16,8 +17,8 @@ import android.widget.Toolbar;
 import java.util.ArrayList;
 
 public class Detalhe extends AppCompatActivity {
-    TextView nome, email, id, criado, atualizado;
-    Button btVoltar;
+    EditText titulo, conteudo;
+    Button excluir, salvar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +38,33 @@ public class Detalhe extends AppCompatActivity {
 
         for (Contato contato : contatos) {
             if (contato.getTitle().equals(itemProcurado)) {
-                nome = (TextView) findViewById(R.id.nome);
-                email = (TextView) findViewById(R.id.email);
-                id = (TextView) findViewById(R.id.id);
-                criado = (TextView) findViewById(R.id.criado);
-                atualizado = (TextView) findViewById(R.id.atualizado);
+                titulo = (EditText) findViewById(R.id.titulo2);
+                conteudo = (EditText) findViewById(R.id.conteudo2);
+//                id = (TextView) findViewById(R.id.id);
+//                criado = (TextView) findViewById(R.id.criado);
+//                atualizado = (TextView) findViewById(R.id.atualizado);
 
-                id.setText(String.valueOf(contato.getId()));
-                nome.setText(contato.getTitle());
-                email.setText(contato.getContent());
-                criado.setText(contato.getCreatedAt());
-                atualizado.setText(contato.getUpdatedAt());
+                titulo.setText(contato.getTitle());
+                conteudo.setText(contato.getContent());
+//                email.setText(contato.getContent());
+//                criado.setText(contato.getCreatedAt());
+//                atualizado.setText(contato.getUpdatedAt());
             }
         }
+
+        salvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        salvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
     }
 

@@ -80,6 +80,7 @@ public class LoginSucesso extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(LoginSucesso.this, Adicionar.class);
                 startActivity(it);
+//                finish();
 //                HttpURLConnection urlConnection = null;
 //                BufferedReader reader = null;
 //                String result = null;

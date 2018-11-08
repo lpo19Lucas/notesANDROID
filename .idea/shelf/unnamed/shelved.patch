@@ -1,0 +1,214 @@
+Index: app/src/main/res/layout/inserir.xml
+===================================================================
+--- app/src/main/res/layout/inserir.xml	(date 1541597110000)
++++ app/src/main/res/layout/inserir.xml	(date 1541597110000)
+@@ -1,79 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<android.support.constraint.ConstraintLayout
+-    xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent">
+-
+-    <LinearLayout
+-        android:layout_width="match_parent"
+-        android:layout_height="373dp"
+-        android:layout_margin="20dp"
+-        android:orientation="vertical"
+-        tools:layout_editor_absoluteX="20dp"
+-        tools:layout_editor_absoluteY="16dp">
+-
+-        <LinearLayout
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginBottom="10dp"
+-            android:orientation="horizontal">
+-
+-            <TextView
+-                android:id="@+id/textView"
+-                android:layout_width="118dp"
+-                android:layout_height="wrap_content"
+-                android:layout_weight="1"
+-                android:text="Titulo:" />
+-
+-            <EditText
+-                android:id="@+id/titulo"
+-                android:layout_width="wrap_content"
+-                android:layout_height="wrap_content"
+-                android:layout_weight="1"
+-                android:ems="10"
+-                android:inputType="textPersonName" />
+-
+-        </LinearLayout>
+-
+-        <LinearLayout
+-            android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_marginTop="30dp"
+-            android:layout_marginBottom="50dp"
+-            android:orientation="horizontal">
+-
+-            <TextView
+-                android:id="@+id/textView3"
+-                android:layout_width="119dp"
+-                android:layout_height="wrap_content"
+-                android:layout_weight="1"
+-                android:text="Conteudo:" />
+-
+-            <EditText
+-                android:id="@+id/conteudo"
+-                android:layout_width="wrap_content"
+-                android:layout_height="179dp"
+-                android:layout_weight="1"
+-                android:ems="10"
+-                android:inputType="text|textEmailAddress" />
+-
+-        </LinearLayout>
+-
+-        <LinearLayout
+-            android:layout_width="match_parent"
+-            android:layout_height="match_parent"
+-            android:orientation="horizontal">
+-
+-            <Button
+-                android:id="@+id/inserir"
+-                android:layout_width="wrap_content"
+-                android:layout_height="wrap_content"
+-                android:layout_weight="1"
+-                android:text="Inserir" />
+-        </LinearLayout>
+-
+-    </LinearLayout>
+-
+-</android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/adicionarr.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:layout_margin=\"20dp\"\n    android:layout_marginBottom=\"200dp\"\n    android:orientation=\"vertical\">\n\n    <LinearLayout\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginBottom=\"10dp\"\n        android:orientation=\"horizontal\">\n\n        <TextView\n            android:id=\"@+id/textView\"\n            android:layout_width=\"70dp\"\n            android:layout_height=\"wrap_content\"\n            android:layout_marginBottom=\"70dp\"\n            android:layout_weight=\"1\"\n            android:text=\"Titulo:\" />\n\n        <EditText\n            android:id=\"@+id/editText\"\n            android:layout_width=\"281dp\"\n            android:layout_height=\"wrap_content\"\n            android:layout_weight=\"1\"\n            android:ems=\"10\"\n            android:inputType=\"textPersonName\" />\n\n        <TextView\n            android:id=\"@+id/nome\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_weight=\"1\"\n            android:textStyle=\"bold\" />\n    </LinearLayout>\n\n    <LinearLayout\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"157dp\"\n        android:layout_marginBottom=\"10dp\"\n        android:layout_marginTop=\"10dp\"\n        android:orientation=\"horizontal\">\n\n        <TextView\n            android:id=\"@+id/textView3\"\n            android:layout_width=\"95dp\"\n            android:layout_height=\"wrap_content\"\n            android:layout_weight=\"1\"\n            android:text=\"Descrição:\" />\n\n        <EditText\n            android:id=\"@+id/editText2\"\n            android:layout_width=\"287dp\"\n            android:layout_height=\"114dp\"\n            android:layout_weight=\"1\"\n            android:ems=\"10\"\n            android:inputType=\"textPersonName\" />\n\n        <TextView\n            android:id=\"@+id/email\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_weight=\"1\"\n            android:textStyle=\"bold\" />\n    </LinearLayout>\n\n    <Button\n        android:id=\"@+id/button\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"Button\" />\n\n</LinearLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/adicionarr.xml	(date 1541597110000)
++++ app/src/main/res/layout/adicionarr.xml	(date 1541636895000)
+@@ -23,7 +23,7 @@
+             android:text="Titulo:" />
+ 
+         <EditText
+-            android:id="@+id/editText"
++            android:id="@+id/titulo"
+             android:layout_width="281dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+@@ -53,9 +53,9 @@
+             android:text="Descrição:" />
+ 
+         <EditText
+-            android:id="@+id/editText2"
++            android:id="@+id/conteudo"
+             android:layout_width="287dp"
+-            android:layout_height="114dp"
++            android:layout_height="match_parent"
+             android:layout_weight="1"
+             android:ems="10"
+             android:inputType="textPersonName" />
+@@ -69,9 +69,9 @@
+     </LinearLayout>
+ 
+     <Button
+-        android:id="@+id/button"
++        android:id="@+id/inserir"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:text="Button" />
++        android:text="Inserir" />
+ 
+ </LinearLayout>
+Index: app/src/main/java/uninove/br/loginwebservice/Adicionar.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package uninove.br.loginwebservice;\n\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.support.v7.app.AppCompatActivity;\nimport android.view.MenuItem;\nimport android.widget.Button;\nimport android.widget.TextView;\n\nimport android.content.DialogInterface;\nimport android.content.Intent;\nimport android.os.Bundle;\nimport android.support.v7.app.AlertDialog;\nimport android.support.v7.app.AppCompatActivity;\nimport android.util.Log;\nimport android.view.MenuItem;\nimport android.view.View;\nimport android.widget.Button;\nimport android.widget.TextView;\nimport android.widget.Toast;\nimport android.widget.Toolbar;\n\nimport java.util.ArrayList;\n\nimport java.util.ArrayList;\n\npublic class Adicionar extends AppCompatActivity{\n\n        TextView nome, email, id, criado, atualizado;\n        Button btVoltar;\n\n        @Override\n        protected void onCreate(Bundle savedInstanceState) {\n            super.onCreate(savedInstanceState);\n            setContentView(R.layout.adicionarr);\n\n            // Configura a barra superior para apresentar um botão de voltar (<-)\n            getSupportActionBar().setDisplayHomeAsUpEnabled(true);\n            getSupportActionBar().setHomeButtonEnabled(true);\n            getSupportActionBar().setTitle(\"Detalhes da Anotação\");\n\n            Intent it = getIntent();\n            Bundle params = it.getExtras();\n            ArrayList<Contato> contatos = (ArrayList<Contato>) params.getSerializable(\"objContatos\");\n\n            String itemProcurado = params.getString(\"nome\");\n\n            for (Contato contato : contatos) {\n                if (contato.getTitle().equals(itemProcurado)) {\n                    nome = (TextView) findViewById(R.id.nome);\n                    email = (TextView) findViewById(R.id.email);\n                    id = (TextView) findViewById(R.id.id);\n                    criado = (TextView) findViewById(R.id.criado);\n                    atualizado = (TextView) findViewById(R.id.atualizado);\n\n                    id.setText(String.valueOf(contato.getId()));\n                    nome.setText(contato.getTitle());\n                    email.setText(contato.getContent());\n                    criado.setText(contato.getCreatedAt());\n                    atualizado.setText(contato.getUpdatedAt());\n                }\n            }\n\n        }\n\n        // Botão na ActionBar (Barra Superior)\n        @Override\n        public boolean onOptionsItemSelected(MenuItem item) {\n            switch (item.getItemId()) {\n                case android.R.id.home:\n                    finish();\n                    return true;\n                default:\n                    return super.onOptionsItemSelected(item);\n            }\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/uninove/br/loginwebservice/Adicionar.java	(date 1541597110000)
++++ app/src/main/java/uninove/br/loginwebservice/Adicionar.java	(date 1541636933000)
+@@ -5,7 +5,8 @@
+ import android.support.v7.app.AppCompatActivity;
+ import android.view.MenuItem;
+ import android.widget.Button;
+-import android.widget.TextView;
++import android.widget.EditText;
++
+ 
+ import android.content.DialogInterface;
+ import android.content.Intent;
+@@ -26,8 +27,8 @@
+ 
+ public class Adicionar extends AppCompatActivity{
+ 
+-        TextView nome, email, id, criado, atualizado;
+-        Button btVoltar;
++        EditText titulo, conteudo;
++        Button inserir;
+ 
+         @Override
+         protected void onCreate(Bundle savedInstanceState) {
+@@ -37,29 +38,37 @@
+             // Configura a barra superior para apresentar um botão de voltar (<-)
+             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+             getSupportActionBar().setHomeButtonEnabled(true);
+-            getSupportActionBar().setTitle("Detalhes da Anotação");
++            getSupportActionBar().setTitle("Inserir Anotação");
+ 
+-            Intent it = getIntent();
+-            Bundle params = it.getExtras();
+-            ArrayList<Contato> contatos = (ArrayList<Contato>) params.getSerializable("objContatos");
++            titulo = (EditText) findViewById(R.id.titulo);
++            conteudo = (EditText) findViewById(R.id.conteudo);
++            inserir.setOnClickListener(new View.OnClickListener() {
++                @Override
++                public void onClick(View view) {
+ 
+-            String itemProcurado = params.getString("nome");
++                }
++            });
+ 
+-            for (Contato contato : contatos) {
+-                if (contato.getTitle().equals(itemProcurado)) {
+-                    nome = (TextView) findViewById(R.id.nome);
+-                    email = (TextView) findViewById(R.id.email);
+-                    id = (TextView) findViewById(R.id.id);
+-                    criado = (TextView) findViewById(R.id.criado);
+-                    atualizado = (TextView) findViewById(R.id.atualizado);
++//            Intent it = getIntent();
++//            Bundle params = it.getExtras();
++//            ArrayList<Contato> contatos = (ArrayList<Contato>) params.getSerializable("objContatos");
+ 
+-                    id.setText(String.valueOf(contato.getId()));
+-                    nome.setText(contato.getTitle());
+-                    email.setText(contato.getContent());
+-                    criado.setText(contato.getCreatedAt());
+-                    atualizado.setText(contato.getUpdatedAt());
+-                }
+-            }
++//            String itemProcurado = params.getString("nome");
++
++//            for (Contato contato : contatos) {
++//                if (contato.getTitle().equals(itemProcurado)) {
++
++//                    id = (EditText) findViewById(R.id.id);
++//                    criado = (TextView) findViewById(R.id.criado);
++//                    atualizado = (TextView) findViewById(R.id.atualizado);
++
++//                    id.setText(String.valueOf(contato.getId()));
++//                    nome.setText(contato.getTitle());
++//                    email.setText(contato.getContent());
++//                    criado.setText(contato.getCreatedAt());
++//                    atualizado.setText(contato.getUpdatedAt());
++//                }
++//            }
+ 
+         }
+ 
