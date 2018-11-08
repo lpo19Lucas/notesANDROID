@@ -6,12 +6,16 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="415dp"
-        android:layout_margin="20dp"
+        android:id="@+id/LEUA"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="16dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -21,7 +25,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="118dp"
+                android:layout_width="64dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Titulo:" />
@@ -45,7 +49,7 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="119dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Conteudo:" />
@@ -53,31 +57,26 @@
             <EditText
                 android:id="@+id/conteudo2"
                 android:layout_width="wrap_content"
-                android:layout_height="179dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="text|textEmailAddress" />
+                android:inputType="textPersonName" />
 
         </LinearLayout>
 
         <Button
             android:id="@+id/salvar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50sp"
             android:text="Salvar" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/excluir"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/excluir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Excluir" />
-        </LinearLayout>
+            android:layout_marginBottom="120sp"
+            android:layout_weight="1"
+            android:text="Excluir" />
 
     </LinearLayout>
 
