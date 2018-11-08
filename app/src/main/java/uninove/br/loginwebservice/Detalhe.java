@@ -52,17 +52,20 @@ public class Detalhe extends AppCompatActivity {
             }
         }
 
+        salvar = (Button) findViewById(R.id.salvar);
+        excluir = (Button) findViewById(R.id.salvar);
+
         salvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                titulo.setText("aaa");
             }
         });
 
-        salvar.setOnClickListener(new View.OnClickListener() {
+        excluir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+//                conteudo.setText("aaa");
             }
         });
 
