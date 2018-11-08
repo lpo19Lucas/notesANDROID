@@ -10,13 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
+//import android.widget.Toast;
+//
+//import java.io.BufferedReader;
+//import java.io.IOException;
+//import java.io.OutputStreamWriter;
+//import java.net.HttpURLConnection;
+//import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -30,10 +30,10 @@ public class LoginSucesso extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_sucesso);
 
-        // Configura a barra superior para apresentar um botão de voltar (<-)
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setTitle("Lista de Anotações");
+//        // Configura a barra superior para apresentar um botão de voltar (<-)
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setTitle("Lista de Anotações");
 
         Intent it = getIntent();
         Bundle params = it.getExtras();
@@ -80,32 +80,6 @@ public class LoginSucesso extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(LoginSucesso.this, Adicionar.class);
                 startActivity(it);
-//                finish();
-//                HttpURLConnection urlConnection = null;
-//                BufferedReader reader = null;
-//                String result = null;
-//
-//                try {
-//                    URL url = new URL("https://serene-meadow-32620.herokuapp.com/api/notes");
-//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//                    conn.setRequestMethod("POST");
-////                    conn.setDoOutput(true);
-////                    OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//
-//                    if (urlConnection != null) {
-//                        urlConnection.disconnect();
-//                    }
-//
-//                    if (reader != null) {
-//                        try {
-//                            reader.close();
-//                        } catch (IOException e1) {
-//                            e1.printStackTrace();
-//                        }
-//                    }
-//                }
             }
         });
 
