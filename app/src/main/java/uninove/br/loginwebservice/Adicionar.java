@@ -32,10 +32,37 @@ public class Adicionar extends AppCompatActivity{
 
             titulo = (EditText) findViewById(R.id.titulo);
             conteudo = (EditText) findViewById(R.id.conteudo);
+            inserir = (Button) findViewById(R.id.inserir);
 
             inserir.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+//
+//                HttpURLConnection urlConnection = null;
+//                BufferedReader reader = null;
+//                String result = null;
+//
+//                try {
+//                    URL url = new URL("https://serene-meadow-32620.herokuapp.com/api/notes");
+//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//                    conn.setRequestMethod("POST");
+//                    conn.setDoOutput(true);
+//                    OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//
+//                    if (urlConnection != null) {
+//                        urlConnection.disconnect();
+//                    }
+//
+//                    if (reader != null) {
+//                        try {
+//                            reader.close();
+//                        } catch (IOException e1) {
+//                            e1.printStackTrace();
+//                        }
+//                    }
+//                }
 
                 }
             });
