@@ -33,42 +33,105 @@ public class Adicionar extends AppCompatActivity{
             titulo = (EditText) findViewById(R.id.titulo);
             conteudo = (EditText) findViewById(R.id.conteudo);
             inserir = (Button) findViewById(R.id.inserir);
-
+            
             inserir.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-//
-//                HttpURLConnection urlConnection = null;
-//                BufferedReader reader = null;
-//                String result = null;
-//
-//                try {
-//                    URL url = new URL("https://serene-meadow-32620.herokuapp.com/api/notes");
-//                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-//                    conn.setRequestMethod("POST");
-//                    conn.setDoOutput(true);
-//                    OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//
-//                    if (urlConnection != null) {
-//                        urlConnection.disconnect();
-//                    }
-//
-//                    if (reader != null) {
-//                        try {
-//                            reader.close();
-//                        } catch (IOException e1) {
-//                            e1.printStackTrace();
-//                        }
-//                    }
-//                }
-
+                    checkNetworkConnection();
+                    
                 }
             });
 
 
+    }
+
+    public boolean checkNetworkConnection() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        boolean isConnected = false;
+        if (networkInfo != null && (isConnected = networkInfo.isConnected())) {
+            Toast.makeText(this, "Conectado" + networkInfo.getTypeName(), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Sem Acesso a Rede", Toast.LENGTH_SHORT).show();
         }
+
+        return isConnected;
+    }
+
+
+    private String httpPost(String myUrl) throws IOException, JSONException {
+
+        URL url = new URL(myUrl);
+
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+
+        JSONObject jsonObject = buidJsonObject();
+
+        setPostRequestContent(conn, jsonObject);
+
+        conn.connect();
+
+        Log.i("Retorno: ", conn.getResponseMessage().toUpperCase());
+        return conn.getResponseMessage().toUpperCase();
+
+    }
+
+    private class HTTPAsyncTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... urls) {
+            try {
+                try {
+                    return httpPost(urls[0]);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return "Erro!";
+                }
+            } catch (IOException e) {
+                return "Sem acesso a página";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            tvResult.setText(result);
+            tvResult.setText("Retorno: " + result);
+        }
+    }
+
+
+    public void send(View view) {
+        // faz o HTTP POST request
+        if (checkNetworkConnection())
+            new HTTPAsyncTask().execute("https://serene-meadow-32620.herokuapp.com/api/notes");
+
+        else
+            Toast.makeText(this, "Sem Conexão!", Toast.LENGTH_SHORT).show();
+
+    }
+
+    private JSONObject buidJsonObject() throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.accumulate("title", titulo.getText().toString());
+        jsonObject.accumulate("content", conteudo.getText().toString());
+
+        return jsonObject;
+    }
+
+    private void setPostRequestContent(HttpURLConnection conn, JSONObject jsonObject) throws IOException {
+
+        OutputStream os = conn.getOutputStream();
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+        writer.write(jsonObject.toString());
+        Log.i(MainActivity.class.toString(), jsonObject.toString());
+        writer.flush();
+        writer.close();
+        os.close();
+    }
+
 
 //        Botão na ActionBar (Barra Superior)
     @Override
@@ -81,5 +144,5 @@ public class Adicionar extends AppCompatActivity{
                     return super.onOptionsItemSelected(item);
             }
         }
-    }
+}
 
