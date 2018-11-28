@@ -1,7 +1,11 @@
 package uninove.br.loginwebservice;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,11 +18,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Detalhe extends AppCompatActivity {
-    EditText titulo, conteudo;
+    EditText titulo, conteudo, id;
     Button excluir, salvar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +50,19 @@ public class Detalhe extends AppCompatActivity {
 
         String itemProcurado = params.getString("nome");
 
-        int userId = 0;
 
         for (Contato contato : contatos) {
             if (contato.getTitle().equals(itemProcurado)) {
                 titulo = (EditText) findViewById(R.id.titulo2);
                 conteudo = (EditText) findViewById(R.id.conteudo2);
+                id = (EditText) findViewById(R.id.id);
 //                id = (TextView) findViewById(R.id.id);
 //                criado = (TextView) findViewById(R.id.criado);
 //                atualizado = (TextView) findViewById(R.id.atualizado);
 
                 titulo.setText(contato.getTitle());
                 conteudo.setText(contato.getContent());
-                userId = contato.getId();
+                id.setText(contato.getId());
 //                email.setText(contato.getContent());
 //                criado.setText(contato.getCreatedAt());
 //                atualizado.setText(contato.getUpdatedAt());
@@ -95,7 +109,15 @@ public class Detalhe extends AppCompatActivity {
         URL url = new URL(myUrl);
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("PUT");
+
+        if(salvar.performClick()){
+            conn.setRequestMethod("PUT");
+        }
+
+        if(excluir.performClick()){
+            conn.setRequestMethod("DELETE");
+        }
+
         conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
         JSONObject jsonObject = buidJsonObject();
@@ -126,8 +148,8 @@ public class Detalhe extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            tvResult.setText(result);
-            tvResult.setText("Retorno: " + result);
+//            tvResult.setText(result);
+//            tvResult.setText("Retorno: " + result);
         }
     }
 
@@ -144,9 +166,16 @@ public class Detalhe extends AppCompatActivity {
 
     private JSONObject buidJsonObject() throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.accumulate("id", userId.toString());
-        jsonObject.accumulate("title", titulo.getText().toString());
-        jsonObject.accumulate("content", conteudo.getText().toString());
+
+        if(salvar.performClick()){
+            jsonObject.accumulate("id", id.getText());
+            jsonObject.accumulate("title", titulo.getText().toString());
+            jsonObject.accumulate("content", conteudo.getText().toString());
+        }
+
+        if(excluir.performClick()){
+            jsonObject.accumulate("id", id.getText());
+        }
 
         return jsonObject;
     }

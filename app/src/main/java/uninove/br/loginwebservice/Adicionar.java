@@ -1,15 +1,29 @@
 package uninove.br.loginwebservice;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
 import android.view.View;
+import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 public class Adicionar extends AppCompatActivity{
@@ -97,8 +111,8 @@ public class Adicionar extends AppCompatActivity{
 
         @Override
         protected void onPostExecute(String result) {
-            tvResult.setText(result);
-            tvResult.setText("Retorno: " + result);
+//            tvResult.setText(result);
+//            tvResult.setText("Retorno: " + result);
         }
     }
 
