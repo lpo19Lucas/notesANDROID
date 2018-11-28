@@ -26,6 +26,9 @@
         <activity
             android:name=".Detalhe"
              />
+        <activity
+            android:name=".Adicionar"
+             />     
     </application>
 
 </manifest>
