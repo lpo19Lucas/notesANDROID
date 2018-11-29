@@ -8,22 +8,16 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/usuario"
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/edit_usuario"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/senha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="@string/edit_senha"
-        android:inputType="textPassword" />
+        android:layout_height="62dp"
+        android:paddingRight="20dp"
+        android:text="Bem vindo ao E-notes"
+        app:autoSizeMinTextSize="10dp"
+        app:autoSizePresetSizes="10"
+        app:autoSizeStepGranularity="10dp"
+        app:autoSizeTextType="10" />
 
     <Button
         android:id="@+id/btLogin"

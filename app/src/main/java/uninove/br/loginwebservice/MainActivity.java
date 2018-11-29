@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText usuario, senha;
+
     Button btLogin;
     ArrayList<Contato> anotacoes = new ArrayList<Contato>();
     private Mensagem msg = new Mensagem(MainActivity.this);
@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        usuario = (EditText) findViewById(R.id.usuario);
-//        senha = (EditText) findViewById(R.id.senha);
+
         btLogin = (Button) findViewById(R.id.btLogin);
 
         btLogin.setOnClickListener(new View.OnClickListener() {
